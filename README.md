@@ -1,4 +1,4 @@
-# MacHash
+# MacinHash
 Convert MacOS plist password file to simple hash file for Hashcat. Tested on MacOS 10.13.
 
 ## Usage
