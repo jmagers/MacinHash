@@ -1,5 +1,8 @@
 # MacinHash
-Convert MacOS plist password file to simple hash file for Hashcat. Tested on MacOS 10.13.
+Convert MacOS plist password file to hash file for Hashcat. Supports MacOS 10.8+.
+
+## Dependencies
+Python 3.5+
 
 ## Usage
 Obtain the plist file located in /var/db/dslocal/nodes/Default/users/
