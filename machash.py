@@ -4,6 +4,8 @@ import argparse
 import plistlib
 import sys
 
+HASH_TYPE = 'SALTED-SHA512-PBKDF2'
+
 # Arguments
 parser = argparse.ArgumentParser(description='Convert Mac plist password file '
                                  'to hash file')
@@ -24,8 +26,17 @@ except plistlib.InvalidFileException:
     sys.exit("Could not parse plist file!")
 
 # Collect hash data
-shadow_hash_data = plistlib.loads(plist['ShadowHashData'][0])
-data = shadow_hash_data['SALTED-SHA512-PBKDF2']
+try:
+    shadow_hash_data = plistlib.loads(plist['ShadowHashData'][0])
+except KeyError:
+    sys.exit("ShadowHashData not found in plist file!")
+except plistlib.InvalidFileException:
+    sys.exit("Could not load ShadowHashData from plist file!")
+try:
+    data = shadow_hash_data[HASH_TYPE]
+except KeyError:
+    sys.exit("ShadowHashData is not of type '%s' and therefore incompatible!"
+             % HASH_TYPE)
 iterations = str(data['iterations'])
 salt = data['salt'].hex()
 entropy = data['entropy'].hex()
