@@ -28,7 +28,7 @@ except plistlib.InvalidFileException:
 # Collect hash data
 try:
     shadow_hash_data = plistlib.loads(plist['ShadowHashData'][0])
-except KeyError:
+except (KeyError, IndexError):
     sys.exit("ShadowHashData not found in plist file!")
 except plistlib.InvalidFileException:
     sys.exit("Could not load ShadowHashData from plist file!")
