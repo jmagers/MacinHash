@@ -1,5 +1,5 @@
 # MacinHash
-Convert MacOS plist password file to hash file for Hashcat. Supports MacOS 10.8+.
+Convert MacOS plist password file to hash file for Hashcat. Supports plist files from MacOS 10.8+. Can be run on any machine that supports Python.
 
 ## Dependencies
 Python 3.5+
