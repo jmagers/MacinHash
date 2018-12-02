@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+# This software is Copyright (c) 2017 Jake Magers <jmagers12 at gmail.com>,
+# and it is hereby released to the general public under the following terms:
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted.
+
 import argparse
 import plistlib
 import sys
