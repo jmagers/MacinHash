@@ -32,6 +32,10 @@ except plistlib.InvalidFileException:
 
 # Collect hash data
 try:
+    username = plist['name'][0] + ':'
+except (KeyError, IndexError):
+    username = ''
+try:
     shadow_hash_data = plistlib.loads(plist['ShadowHashData'][0])
 except (KeyError, IndexError):
     sys.exit("ShadowHashData not found in plist file!")
@@ -47,5 +51,5 @@ salt = data['salt'].hex()
 entropy = data['entropy'].hex()[:128]
 
 # Format and output hash data
-formatted_hash = '$'.join(['$ml', iterations, salt, entropy])
+formatted_hash = '$'.join([username, 'ml', iterations, salt, entropy])
 print(formatted_hash, file=args.hashfile)
