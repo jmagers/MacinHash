@@ -44,7 +44,7 @@ except KeyError:
              % HASH_TYPE)
 iterations = str(data['iterations'])
 salt = data['salt'].hex()
-entropy = data['entropy'].hex()
+entropy = data['entropy'].hex()[:128]
 
 # Format and output hash data
 formatted_hash = '$'.join(['$ml', iterations, salt, entropy])
